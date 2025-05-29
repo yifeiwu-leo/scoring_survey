@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Rubric</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-8 text-center">Interview Rubric</h1>
+    <form id="surveyForm">
+      <!-- Question 1 -->
+      <div class="mb-8">
+        <p class="font-semibold text-lg mb-4">1. Task 1?</p>
+        <div class="space-y-4 mb-4">
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="1" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Poor (1)</label>
+              <p class="text-sm text-gray-600">Did not implement.</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="2" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Fair (2)</label>
+              <p class="text-sm text-gray-600">Met some expectations but had noticeable shortcomings.</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="3" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Good (3)</label>
+              <p class="text-sm text-gray-600">Met expectations with minor issues that did not significantly impact outcomes</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="4" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Excellent (4)</label>
+              <p class="text-sm text-gray-600">Met outcomes and stretch goals.</p>
+            </div>
+          </div>
+        </div>
+        <textarea name="q1_notes" class="w-full p-3 border rounded" rows="4" placeholder="Enter notes for Task 1..."></textarea>
+      </div>
+      <!-- Question 2 -->
+      <div class="mb-8">
+        <p class="font-semibold text-lg mb-4">2. How would you rate Task 2?</p>
+        <div class="space-y-4 mb-4">
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="1" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Poor (1)</label>
+              <p class="text-sm text-gray-600">Did not implement.</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="2" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Fair (2)</label>
+              <p class="text-sm text-gray-600">Met some expectations but had noticeable shortcomings.</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="3" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Good (3)</label>
+              <p class="text-sm text-gray-600">Met expectations with minor issues that did not significantly impact outcomes</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="4" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Excellent (4)</label>
+              <p class="text-sm text-gray-600">Met outcomes and stretch goals.</p>
+            </div>
+          </div>
+        </div>
+        <textarea name="q2_notes" class="w-full p-3 border rounded" rows="4" placeholder="Enter notes for question 2..."></textarea>
+      </div>
+      <!-- Question 3 -->
+      <div class="mb-8">
+        <p class="font-semibold text-lg mb-4">3. Task 3?</p>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="1" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Poor (1)</label>
+              <p class="text-sm text-gray-600">Did not implement.</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="2" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Fair (2)</label>
+              <p class="text-sm text-gray-600">Met some expectations but had noticeable shortcomings.</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="3" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Good (3)</label>
+              <p class="text-sm text-gray-600">Met expectations with minor issues that did not significantly impact outcomes</p>
+            </div>
+          </div>
+          <div class="flex items-start border p-4 rounded">
+            <input type="radio" name="q1" value="4" class="mt-1 mr-3">
+            <div>
+              <label class="font-medium">Excellent (4)</label>
+              <p class="text-sm text-gray-600">Met outcomes and stretch goals.</p>
+            </div>
+          </div>
+        </div>
+         
+        <textarea name="q3_notes" class="w-full p-3 border rounded" rows="4" placeholder="Enter notes for question 3..."></textarea>
+      </div>
+      <!-- Results -->
+      <div class="mt-8">
+        <h2 class="text-xl font-semibold mb-4">Survey Results</h2>
+        <textarea id="result" class="w-full p-3 border rounded bg-gray-50" rows="6" readonly placeholder="Results will appear here once all questions are answered..."></textarea>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('surveyForm');
+    const resultTextarea = document.getElementById('result');
+    const questionCount = 3; // Number of questions
+
+    function updateResults() {
+      // Get all radio button groups
+      const radioGroups = ['q1', 'q2', 'q3'];
+      let allAnswered = true;
+      let totalScore = 0;
+      let notesSummary = '';
+
+      radioGroups.forEach((group, index) => {
+        const selectedRadio = form.querySelector(`input[name="${group}"]:checked`);
+        const notes = form.querySelector(`textarea[name="${group}_notes"]`).value.trim();
+
+        if (selectedRadio) {
+          totalScore += parseInt(selectedRadio.value);
+          if (notes) {
+            notesSummary += `Question ${index + 1} Notes: ${notes}\n`;
+          }
+        } else {
+          allAnswered = false;
+        }
+      });
+
+      // Update result textarea only if all questions have a selected radio button
+      if (allAnswered) {
+        resultTextarea.value = `Total Score: ${totalScore}\n\nNotes Summary:\n${notesSummary || 'No notes provided.'}`;
+      } else {
+        resultTextarea.value = 'Results will appear here once all questions are answered...';
+      }
+    }
+
+    // Add event listeners to all radio buttons and textareas
+    form.querySelectorAll('input[type="radio"], textarea').forEach(element => {
+      element.addEventListener('change', updateResults);
+    });
+
+    // Initial call to set placeholder text
+    updateResults();
+  </script>
+</body>
+</html>
